@@ -2,6 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "sequoia",
   "name": "RAX Protocol",
+  "home": "start-here/introduction",
   "colors": {
     "primary": "#3B82F6",
     "light": "#60A5FA",
