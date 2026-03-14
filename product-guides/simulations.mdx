@@ -1,0 +1,36 @@
+---
+title: "Simulations"
+description: "RAX Protocol — Simulations"
+---
+
+Simulations allow users to test how the autonomous vault would behave over a specified time period before committing to autonomous operation.
+
+---
+
+### How Simulations Work
+
+The simulation engine runs the full allocation engine decision loop — risk calculation, mandate checking, opportunity evaluation, allocation proposal — repeatedly over a simulated time window. Each iteration may produce a different outcome depending on simulated market conditions, including random volatility events.
+
+---
+
+### Running a Simulation
+
+Users configure the duration (how many hours to simulate) and the vault to test against. The simulation produces a timeline of events showing every decision the system would have made.
+
+---
+
+### Interpreting Results
+
+The simulation summary shows: total evaluations performed, number of rebalances triggered, number of emergency stops, number of holds, and number of pending approvals.
+
+A healthy simulation typically shows mostly holds with occasional rebalances. Frequent emergency stops suggest the mandate's risk limits may be too close to current market conditions. Frequent rejections suggest overly restrictive constraints.
+
+This helps users calibrate their mandate before enabling autonomous mode.
+
+---
+
+### Limitations
+
+Simulations use simplified market models with random volatility events. They do not replicate actual market conditions and should not be interpreted as predictions. They are tools for understanding system behavior under mandate constraints.
+
+Simulations are available from the Pro tier.

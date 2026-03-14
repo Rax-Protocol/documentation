@@ -1,0 +1,47 @@
+---
+title: "Access & Limits"
+description: "RAX Protocol — Access & Limits"
+---
+
+RaxBot's capabilities are gated by the user's access tier and configured through the mandate.
+
+---
+
+### Access Requirements
+
+Full RaxBot access requires the Power tier (10,000+ $RAX) and explicit activation of auto-execute in the mandate settings. Autonomous mode is never enabled by default.
+
+At the Capital Deposited tier, users can run the Allocation Engine on demand and review decision history, but all proposals require manual approval.
+
+---
+
+### Mandate-Defined Limits
+
+All limits are per-vault and configured through the mandate:
+
+- **Maximum Risk Score** — default 50
+- **Maximum Protocol Exposure** — default 40%
+- **Maximum Chain Exposure** — default 100%
+- **Minimum Liquidity Threshold** — default 10%
+- **Maximum Capital Per Rebalance** — default 25%
+- **Rebalance Threshold** — default 5%
+- **Minimum Rebalance Interval** — default 1 hour
+- **Maximum Drawdown** — triggers emergency stop
+- **Protocol Allowlist** — empty = all supported protocols allowed
+- **Asset Allowlist** — empty = all supported assets allowed
+- **Approval Threshold** — capital above which manual approval is required even in autonomous mode
+
+---
+
+### System Limits
+
+- The keeper wallet must maintain a minimum ETH balance for gas. Insufficient balance results in simulated (non-on-chain) execution.
+- The vault contract enforces the keeper role. Only the authorized address can call the rebalance function.
+- The Pausable mechanism halts all operations when triggered.
+- The drawdown check runs after every on-chain action.
+
+---
+
+### Adjusting Limits
+
+All mandate parameters can be modified through the Settings interface. Changes take effect on the next decision cycle. Mandate changes are versioned — each decision record references the active version, ensuring a clear audit trail.

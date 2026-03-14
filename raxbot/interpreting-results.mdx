@@ -1,0 +1,44 @@
+---
+title: "Interpreting Results"
+description: "RAX Protocol — Interpreting Results"
+---
+
+Every decision cycle produces a structured record. Understanding these records is essential for monitoring RaxBot's behavior and verifying that it operates within your mandate.
+
+---
+
+### Decision Record Fields
+
+**Type** — The category of decision: hold, rebalance, emergency_stop, or pending_approval.
+
+**Status** — Whether the decision was executed, is awaiting approval, was rejected, or completed as a hold.
+
+**Current Allocation** — The vault's allocation at the time of the decision.
+
+**Proposed Allocation** — The allocation RaxBot recommends, if a change is warranted.
+
+**Current Risk Score** — The overall risk score at evaluation time, on a 0-100 scale.
+
+**Expected Risk Change** — How much the risk score would change if the proposal were executed. Negative values mean risk would decrease.
+
+**Compliance Check** — The result of validating the proposal against all mandate constraints. Lists any violations or warnings.
+
+**Rationale** — A human-readable explanation of why the decision was made.
+
+**Execution Details** — For on-chain executions: transaction hash, block number, gas used, and explorer link. For simulated executions: marked as simulated.
+
+---
+
+### Reading Compliance Results
+
+**Violations** are hard failures that block execution. Common violations: risk score exceeds mandate maximum, single protocol exceeds exposure limit, liquid assets below threshold, protocol not on allowlist, capital movement exceeds per-rebalance limit.
+
+**Warnings** indicate approaching limits without blocking execution.
+
+---
+
+### When to Intervene
+
+Manual intervention is appropriate when: repeated rejected proposals suggest the mandate is too restrictive, emergency stops require review before unpausing, pending approvals accumulate, or the rationale describes conditions you want to respond to differently.
+
+The correct response is always adjusting the mandate — not overriding individual decisions.

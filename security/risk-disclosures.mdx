@@ -1,0 +1,36 @@
+---
+title: "Risk Disclosures"
+description: "RAX Protocol — Risk Disclosures"
+---
+
+RAX Protocol involves multiple categories of risk that users should understand before interacting with the system or depositing capital.
+
+---
+
+### Smart Contract Risk
+
+The vault and strategy adapter contracts may contain bugs or vulnerabilities. While the contracts use audited OpenZeppelin libraries (Ownable2Step, ReentrancyGuard, Pausable, ERC4626, SafeERC20), the RAX-specific logic has not undergone a formal third-party audit at this stage. A formal audit is planned before mainnet deployment.
+
+### Strategy Risk
+
+Capital deployed to external protocols (Aave, Compound, Uniswap V3, Aerodrome) inherits the risks of those protocols, including smart contract vulnerabilities, governance attacks, oracle failures, and liquidity events. RAX monitors these protocols but cannot prevent their failure.
+
+### Keeper Risk
+
+The keeper wallet is a single point of execution. If the keeper private key is compromised, unauthorized rebalances could occur within the onlyKeeper constraint. If the keeper process stops, the vault cannot rebalance until it is restored, though deposits and withdrawals remain functional.
+
+### Model Risk
+
+Risk scores are derived from models with assumptions that may not hold under extreme or unprecedented market conditions. Scores may underestimate risk during black swan events or novel attack vectors. Models are comparative, not predictive.
+
+### Liquidity Risk
+
+Exiting positions in low-liquidity protocols may result in slippage or delayed withdrawal. The mandate's minimum liquidity threshold mitigates but does not eliminate this risk.
+
+### Testnet Status
+
+The current deployment is on Base Sepolia testnet. Testnet tokens have no monetary value. System behavior on testnet may differ from mainnet conditions.
+
+### General Warning
+
+Users should not deposit more capital than they can afford to lose entirely. RAX provides risk intelligence and decision support, not guarantees.

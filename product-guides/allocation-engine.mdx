@@ -1,0 +1,75 @@
+---
+title: "Allocation Engine"
+description: "RAX Protocol — Allocation Engine"
+---
+
+The Allocation Engine is the decision-support core of RAX Protocol.
+
+It is designed to help users allocate capital in a disciplined manner by applying explicit risk constraints, strategy profiles, and real-time risk intelligence.
+
+Rather than optimizing for maximum yield, the Allocation Engine prioritizes control, resilience, and capital efficiency.
+
+---
+
+### How It Works
+
+Each evaluation follows a structured sequence:
+
+1. Load the vault's current state and active mandate
+2. Check whether the vault is paused
+3. Calculate risk metrics across all current positions
+4. Check for emergency triggers (critical risk, drawdown breach, liquidity crisis)
+5. Detect current market and portfolio conditions
+6. Verify the minimum rebalance interval has elapsed
+7. Evaluate available opportunities against the mandate's constraints
+8. Propose an allocation based on strategy profile and risk-adjusted yield
+9. Run a full compliance check against all mandate constraints
+10. Generate an explanation of the reasoning
+11. Determine whether the deviation warrants rebalancing
+12. Execute, request approval, or hold based on compliance results
+
+---
+
+### Strategy Profiles
+
+The engine operates using strategy profiles that define the user's risk posture:
+
+- **Defensive** — focused on capital preservation and stability, favoring low-risk positions
+- **Balanced** — targeting risk-adjusted efficiency across the portfolio
+- **Aggressive** — tolerating higher volatility for potential upside
+
+Profiles define boundaries and priorities. They do not execute trades automatically unless autonomous mode is enabled.
+
+---
+
+### Risk Constraints
+
+Risk constraints are explicit limits applied to every allocation decision:
+
+- Maximum acceptable Risk Score
+- Maximum protocol exposure per position
+- Maximum chain exposure
+- Minimum liquidity threshold
+- Maximum capital moved per rebalance
+- Drawdown tolerance
+- Protocol and asset allowlists
+
+Constraints act as guardrails that prevent allocations outside acceptable risk boundaries. If any constraint would be violated, the proposal is rejected.
+
+---
+
+### Allocation Suggestions
+
+Based on the active profile and constraints, the engine generates allocation suggestions that may include increasing or decreasing exposure to specific strategies, rebalancing across protocols, reducing concentration in high-risk areas, or maintaining defensive positioning.
+
+All suggestions are advisory by default and require user approval unless autonomous mode is enabled.
+
+---
+
+### Human Oversight and Control
+
+The Allocation Engine is designed with human oversight in mind. It does not execute trades autonomously unless the user explicitly enables auto-execution in the mandate. Users remain in control of strategy selection, constraint configuration, approval decisions, and the ability to pause at any time.
+
+This design ensures accountability and transparency at every step.
+
+The Allocation Engine is available from the Pro tier. Autonomous execution requires the Power tier.

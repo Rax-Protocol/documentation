@@ -1,0 +1,51 @@
+---
+title: "RaxBot Overview"
+description: "RAX Protocol — RaxBot Overview"
+---
+
+RaxBot is the autonomous execution component of RAX Protocol.
+
+It operates as a background process that continuously monitors vault conditions, evaluates risk, and executes allocation decisions within the boundaries defined by the user's mandate.
+
+---
+
+### What RaxBot Does
+
+RaxBot performs a repeating decision cycle:
+
+- Calculates current risk metrics across the vault's positions
+- Checks for emergency conditions that require immediate action
+- Evaluates whether the current allocation still satisfies the mandate
+- Proposes rebalancing if conditions have changed beyond the configured threshold
+- Executes approved changes on-chain via the dedicated keeper wallet
+- Logs every decision with full rationale for transparency
+
+Each cycle produces a decision record that is stored and auditable.
+
+---
+
+### How It Relates to the Allocation Engine
+
+The Allocation Engine described in the Product Guides section is the logic core that RaxBot executes. When a user interacts with the Allocation Engine through the interface, they are running the same evaluation that RaxBot runs autonomously.
+
+The difference is timing and trigger: through the interface, the evaluation runs on demand. Through RaxBot, it runs automatically at regular intervals. The mandate, risk constraints, and compliance checks are identical in both paths.
+
+---
+
+### What RaxBot Is Not
+
+RaxBot is not a general-purpose AI assistant or chatbot. Users do not have conversations with it.
+
+RaxBot is not a prediction engine. It does not forecast prices or guarantee returns.
+
+RaxBot is not unconstrained. Every action it takes must satisfy the active mandate. It cannot exceed the maximum risk score, allocate to protocols outside the allowlist, or move more capital than the per-rebalance limit allows.
+
+RaxBot is a constrained autonomous process that operates within explicit rules defined by the user.
+
+---
+
+### Transparency
+
+Every decision cycle produces a log entry containing the type of decision, current and proposed allocations, risk scores before and after, compliance check results, the rationale behind the decision, and execution details including transaction hash when applicable.
+
+Users can review the complete decision history at any time through the interface.

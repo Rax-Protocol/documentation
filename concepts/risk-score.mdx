@@ -1,0 +1,90 @@
+---
+title: "Risk Score"
+description: "RAX Protocol — Risk Score"
+---
+
+The Risk Score is a core concept in RAX Protocol.
+
+It provides a normalized view of relative risk across assets, protocols, strategies, and portfolios, allowing users to reason about exposure and capital allocation using a consistent reference point.
+
+---
+
+### What the Risk Score Represents
+
+The RAX Risk Score is a normalized value ranging from 0 to 100.
+
+- Lower values indicate lower relative risk
+- Higher values indicate higher relative risk
+
+The score is designed to be comparative, not absolute. It reflects how risky an asset, protocol, or portfolio is relative to others under current market conditions.
+
+A low score does not imply the absence of risk. A high score does not imply inevitable failure.
+
+---
+
+### How the Score Is Calculated
+
+RAX uses a five-dimensional scoring model with the following weights:
+
+**Smart Contract Risk (30%)** — Evaluates protocol maturity, TVL as a proxy for battle-testing, and protocol category. Established protocols like Aave and Compound receive lower scores. Newer or structured products receive higher scores.
+
+**Impermanent Loss Risk (25%)** — Relevant for liquidity pool positions. Evaluated based on pool type, observed IL over 7-day windows, and asset correlation. Stablecoin pools score very low; volatile LP pairs score high.
+
+**Liquidity Risk (20%)** — Assesses available liquidity relative to the vault or pool size, trading volume ratios, and capacity utilization. Low-liquidity positions increase exit risk and receive higher scores.
+
+**Volatility Risk (15%)** — Measures yield stability over 30-day windows using APY percentage change. Stablecoin positions receive minimal scores. The system also incorporates predicted stability classification where available.
+
+**Protocol Risk (10%)** — A tiered assessment based on protocol reputation. Tier 1 protocols (Aave, Uniswap, Curve, Lido, Compound, Maker) receive the lowest scores. Tier 2 (Balancer, Convex, Yearn) and Tier 3 (Velodrome, Aerodrome, Pendle) receive progressively higher scores.
+
+### Risk Categories
+
+Composite scores map to categories:
+
+- 0–20: Very Low
+- 21–40: Low
+- 41–60: Moderate
+- 61–80: High
+- 81–100: Very High
+
+---
+
+### How the Risk Score Is Used
+
+The Risk Score appears throughout the RAX system:
+
+- Global Risk Score to describe overall conditions
+- Portfolio Risk Score to summarize aggregate portfolio risk
+- Protocol and vault risk scores to compare relative safety
+- Allocation Engine inputs to constrain and guide capital allocation
+- Alert thresholds to detect rising or abnormal risk
+- Emergency triggers — if the score exceeds 150% of the mandate maximum, an automatic emergency stop activates
+
+In all cases, the score is intended to be interpreted alongside supporting metrics, not in isolation.
+
+---
+
+### Interpreting Risk Score Changes
+
+Risk Scores are dynamic and may change over time. Common reasons include increases in volatility, liquidity inflows or outflows, shifts in market correlation, detection of anomalous behavior, and changes in exposure composition.
+
+A rising Risk Score indicates increasing relative risk. A falling Risk Score indicates improving relative conditions. Trends across multiple readings are more informative than single-point values.
+
+---
+
+### What the Risk Score Does Not Do
+
+The Risk Score does not predict future prices, guarantee safety or returns, replace detailed analysis, or eliminate the need for human judgment.
+
+It is a decision-support signal, not an autonomous decision-maker.
+
+---
+
+### Using the Risk Score Effectively
+
+To use the Risk Score effectively:
+
+- Compare scores across similar assets or strategies
+- Monitor changes over time rather than focusing on single values
+- Combine the score with exposure analysis and simulations
+- Apply explicit constraints when allocating capital
+- Treat scores with caution during unprecedented market events — models have assumptions that may not hold under extreme conditions

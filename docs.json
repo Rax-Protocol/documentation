@@ -1,68 +1,90 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "sequoia",
+  "name": "RAX Protocol",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#3B82F6",
+    "light": "#60A5FA",
+    "dark": "#1E40AF"
   },
-  "favicon": "/favicon.svg",
   "navigation": {
-    "tabs": [
+    "anchors": [
       {
-        "tab": "Guides",
+        "anchor": "Documentation",
+        "icon": "book-open",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Start Here",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "start-here/introduction",
+              "start-here/quickstart",
+              "start-here/glossary"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Concepts",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "concepts/risk-score",
+              "concepts/exposure-vs-allocation",
+              "concepts/risk-adjusted-yield"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Product Guides",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "product-guides/risk-overview",
+              "product-guides/exposure-analysis",
+              "product-guides/alerts-and-monitoring",
+              "product-guides/simulations",
+              "product-guides/allocation-engine",
+              "product-guides/settings-and-access-control"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "AI-Managed Vault",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
+              "vault/architecture"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "RaxBot",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "raxbot/overview",
+              "raxbot/decision-cycles",
+              "raxbot/interpreting-results",
+              "raxbot/access-and-limits"
+            ]
+          },
+          {
+            "group": "Developers",
+            "pages": [
+              "developers/api-overview",
+              "developers/data-schemas"
+            ]
+          },
+          {
+            "group": "Security",
+            "pages": [
+              "security/risk-disclosures",
+              "security/known-failure-modes",
+              "security/incident-response",
+              "security/responsible-disclosure"
+            ]
+          },
+          {
+            "group": "Token & Governance",
+            "pages": [
+              "token-and-governance/overview",
+              "token-and-governance/token-utility",
+              "token-and-governance/staking",
+              "token-and-governance/governance",
+              "token-and-governance/guardrails"
+            ]
+          },
+          {
+            "group": "Roadmap",
+            "pages": [
+              "roadmap/roadmap"
             ]
           }
         ]
@@ -71,52 +93,53 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Website",
+          "href": "https://raxprotocol.xyz",
+          "icon": "globe"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "X",
+          "href": "https://x.com/raxprotocol",
+          "icon": "twitter"
         }
       ]
     }
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "App",
+        "href": "https://app.raxprotocol.xyz"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Rax-Protocol"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Launch App",
+      "href": "https://app.raxprotocol.xyz"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "twitter": "https://x.com/raxprotocol",
+      "github": "https://github.com/Rax-Protocol"
     }
+  },
+  "background": {
+    "decoration": "gradient",
+    "color": {
+      "light": "#000000"
+    }
+  },
+  "appearance": {
+    "default": "system",
+    "strict": true
+  },
+  "logo": {
+    "light": "/images/logo-32x32-vector-ish.svg",
+    "dark": "/images/logo-32x32-vector-ish.svg"
   }
 }

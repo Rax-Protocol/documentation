@@ -1,0 +1,37 @@
+---
+title: "Guardrails"
+description: "RAX Protocol — Guardrails"
+---
+
+Guardrails define the boundaries within which governance and autonomous systems operate, preventing unilateral changes that could harm users or destabilize the protocol.
+
+---
+
+### Mandate Guardrails
+
+The mandate system includes hard limits that governance cannot override:
+
+- Fee caps are enforced at the smart contract level (management fee max 5%, performance fee max 30%)
+- The keeper role is restricted to a single authorized address per vault
+- Emergency pause is always available to the owner, regardless of governance state
+- Drawdown protection activates automatically and cannot be disabled through governance
+
+### Governance Guardrails
+
+When governance is active, it will include protections against governance capture:
+
+- Minimum quorum requirements for votes to be valid
+- Timelock periods between vote approval and execution
+- Emergency veto capability for critical security issues
+- Gradual rollout of parameter changes rather than instant application
+
+### System Guardrails
+
+The protocol maintains several invariants:
+
+- The vault cannot allocate to strategies not registered through `addStrategy()`
+- Rebalance weights must sum to 10,000 basis points (100%)
+- The keeper cannot bypass the Pausable state
+- All decision records are immutable once logged
+
+These guardrails exist to ensure that no single actor — human or automated — can compromise the system's integrity.

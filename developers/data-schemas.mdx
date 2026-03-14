@@ -1,0 +1,91 @@
+---
+title: "Data Schemas"
+description: "RAX Protocol — Data Schemas"
+---
+
+### Risk Metrics
+
+```json
+{
+  "overallScore": 35.2,
+  "protocolRisk": 25.0,
+  "concentrationRisk": 40.0,
+  "liquidityRisk": 20.0,
+  "volatilityExposure": 32.0,
+  "alerts": ["MEDIUM: Moderate concentration risk"],
+  "timestamp": "2026-03-14T12:00:00Z"
+}
+```
+
+### Detailed Risk Breakdown (per vault/pool)
+
+```json
+{
+  "impermanent_loss_risk": 15.0,
+  "smart_contract_risk": 25.0,
+  "liquidity_risk": 30.0,
+  "volatility_risk": 20.0,
+  "protocol_risk": 10.0,
+  "total_score": 21.5,
+  "category": "LOW"
+}
+```
+
+### Decision Record
+
+```json
+{
+  "type": "rebalance",
+  "status": "executed",
+  "vaultId": "...",
+  "currentAllocation": [
+    { "protocol": "Aave", "percentage": 40, "amount": 4000 }
+  ],
+  "proposedAllocation": [
+    { "protocol": "Aave", "percentage": 30, "amount": 3000 },
+    { "protocol": "Compound", "percentage": 35, "amount": 3500 }
+  ],
+  "currentRiskScore": 42.5,
+  "expectedRiskChange": -7.3,
+  "expectedYieldChange": 1.2,
+  "complianceCheck": {
+    "isCompliant": true,
+    "violations": [],
+    "warnings": ["Risk score approaching maximum"]
+  },
+  "aiRationale": "Portfolio rebalancing recommended to reduce concentration risk...",
+  "mandateId": "...",
+  "mandateVersion": 3,
+  "execution": {
+    "success": true,
+    "txHash": "0x...",
+    "blockNumber": 12345,
+    "gasUsed": "142000",
+    "simulated": false,
+    "keeperAddress": "0x...",
+    "explorerUrl": "https://sepolia.basescan.org/tx/0x..."
+  }
+}
+```
+
+### Mandate
+
+```json
+{
+  "riskTolerance": "balanced",
+  "maxRiskScore": 50,
+  "maxProtocolExposure": 40,
+  "maxChainExposure": 100,
+  "minLiquidityThreshold": 10,
+  "maxCapitalPerRebalance": 25,
+  "rebalanceThreshold": 5,
+  "minRebalanceInterval": 3600,
+  "maxDrawdown": 15,
+  "protocolAllowlist": ["Aave", "Compound", "Uniswap", "Aerodrome"],
+  "assetAllowlist": ["USDC"],
+  "autoExecute": false,
+  "requireApprovalAbove": 10000,
+  "emergencyPaused": false,
+  "version": 3
+}
+```

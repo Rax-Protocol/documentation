@@ -1,0 +1,50 @@
+---
+title: "Decision Cycles"
+description: "RAX Protocol — Decision Cycles"
+---
+
+A decision cycle is one complete evaluation-and-action pass performed by RaxBot. Each cycle follows a fixed sequence of steps and produces one of several possible outcomes.
+
+---
+
+### Possible Outcomes
+
+**Hold** — The current allocation is within acceptable parameters. No action needed. This is the most common outcome in stable conditions.
+
+**Rebalance** — Conditions have changed enough to warrant adjusting allocations. If the mandate allows auto-execution and compliance checks pass, the rebalance is executed on-chain immediately.
+
+**Pending Approval** — The proposed change is compliant but exceeds the approval threshold defined in the mandate, or auto-execution is disabled. The user is notified and must approve or reject.
+
+**Rejected** — The proposed allocation violates one or more mandate constraints. No action is taken. The violation details are logged.
+
+**Emergency Stop** — A critical condition has been detected. The vault is paused automatically. No human approval is required — this is a safety mechanism.
+
+**Paused** — The vault was already paused. The cycle logs this state and takes no further action.
+
+---
+
+### What Triggers a Rebalance
+
+A rebalance is triggered when any of the following conditions are met:
+
+- The vault has no current allocations (initial allocation required)
+- The current risk score exceeds the mandate's maximum allowed risk score
+- The deviation between current and proposed allocations exceeds the rebalance threshold
+
+---
+
+### Emergency Triggers
+
+Emergency stops are automatic and non-discretionary. They activate when:
+
+- Maximum drawdown is breached (current value has fallen too far from peak)
+- Risk score exceeds 150% of the mandate's maximum
+- Liquidity risk exceeds 85/100
+
+When an emergency stop fires, the vault is paused on-chain. No deposits, withdrawals, or rebalances can occur until the pause is lifted.
+
+---
+
+### Cycle Frequency
+
+The minimum interval between cycles is configured in the mandate. Even if a cycle determines that rebalancing is needed, it will not execute if the minimum interval has not elapsed since the last rebalance.

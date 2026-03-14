@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <radialGradient id="bg" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#0B2B45"/>
+      <stop offset="60%" stop-color="#071A2B"/>
+      <stop offset="100%" stop-color="#04111F"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2FF2FF"/>
+      <stop offset="100%" stop-color="#0AA6D6"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="0.6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Coin background -->
+  <circle cx="16" cy="16" r="15" fill="url(#bg)"/>
+  <circle cx="16" cy="16" r="14.4" fill="none" stroke="url(#ring)" stroke-width="1.0" filter="url(#glow)"/>
+  <circle cx="16" cy="16" r="12.9" fill="none" stroke="#1CEBFF" stroke-opacity="0.65" stroke-width="0.6"/>
+
+  <!-- Auto-traced cyan strokes (from your JPG) -->
+  <path d="M 5.875 10.938 L 5.688 10.750 L 5.812 10.625 L 5.812 10.500 L 5.938 10.375 L 5.938 10.250 L 6.062 10.125 L 6.062 10.000 L 6.312 9.750 L 6.312 9.625 L 6.438 9.500 L 6.438 9.375 L 6.688 9.125 L 6.688 9.000 L 7.062 8.625 L 7.062 8.500 L 7.688 7.875 L 7.688 7.750 L 8.375 7.062 L 8.562 7.250 L 7.688 8.125 L 7.688 8.250 L 7.188 8.750 L 7.188 8.875 L 6.938 9.125 L 6.938 9.250 L 6.688 9.500 L 6.688 9.625 L 6.438 9.875 L 6.438 10.000 L 6.312 10.125 L 6.312 10.250 L 6.188 10.375 L 6.188 10.500 L 6.062 10.625 L 6.062 10.750 L 5.875 10.938 Z" fill="none" stroke="#1CEBFF" stroke-width="0.55" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M 24.250 23.312 L 24.062 23.125 L 24.062 23.000 L 23.688 22.625 L 23.875 22.438 L 24.250 22.812 L 24.375 22.812 L 24.688 22.500 L 24.688 22.375 L 25.062 22.000 L 25.062 21.875 L 25.312 21.625 L 25.312 21.500 L 25.438 21.375 L 25.438 21.250 L 25.625 21.062 L 25.812 21.250 L 25.688 21.375 L 25.688 21.500 L 25.438 21.750 L 25.438 21.875 L 25.188 22.125 L 25.188 22.250 L 24.812 22.625 L 24.812 22.750 L 24.250 23.312 Z" fill="none" stroke="#1CEBFF" stroke-width="0.55" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M 7.875 23.312 L 7.188 22.625 L 7.188 22.500 L 6.812 22.125 L 6.812 22.000 L 6.562 21.750 L 6.562 21.625 L 6.312 21.375 L 6.500 21.188 L 6.688 21.375 L 6.688 21.500 L 6.938 21.750 L 6.938 21.875 L 7.312 22.250 L 7.312 22.375 L 8.062 23.125 L 7.875 23.312 Z" fill="none" stroke="#1CEBFF" stroke-width="0.55" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M 10.250 25.312 L 10.000 25.062 L 9.875 25.062 L 9.625 24.812 L 9.500 24.812 L 9.125 24.438 L 9.000 24.438 L 8.312 23.750 L 8.500 23.562 L 9.250 24.312 L 9.375 24.312 L 9.750 24.688 L 9.875 24.688 L 10.125 24.938 L 10.250 24.938 L 10.438 25.125 L 10.250 25.312 Z" fill="none" stroke="#1CEBFF" stroke-width="0.55" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M 22.125 25.188 L 21.938 25.000 L 22.125 24.812 L 22.250 24.812 L 22.625 24.438 L 22.750 24.438 L 23.375 23.812 L 23.562 24.000 L 23.000 24.562 L 22.875 24.562 L 22.625 24.812 L 22.500 24.812 L 22.125 25.188 Z" fill="none" stroke="#1CEBFF" stroke-width="0.55" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M 11.375 25.938 L 11.250 25.812 L 11.125 25.812 L 11.000 25.688 L 10.875 25.688 L 10.688 25.500 L 10.875 25.312 L 11.000 25.438 L 11.125 25.438 L 11.250 25.562 L 11.375 25.562 L 11.562 25.750 L 11.375 25.938 Z" fill="none" stroke="#1CEBFF" stroke-width="0.55" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/>
+</svg>

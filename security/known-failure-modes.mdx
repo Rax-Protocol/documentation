@@ -1,0 +1,32 @@
+---
+title: "Known Failure Modes"
+description: "RAX Protocol — Known Failure Modes"
+---
+
+RAX is designed to degrade safely under adverse conditions. Understanding known failure modes helps users configure mandates appropriately and respond to incidents.
+
+---
+
+### Keeper Process Interruption
+
+If the keeper process stops, the vault continues holding its current allocations but cannot rebalance or respond to changing conditions. The vault contract remains functional for deposits and withdrawals. The system does not auto-pause on keeper failure.
+
+### Gas Exhaustion
+
+If the keeper wallet runs out of ETH for gas, rebalances are logged as simulated but not executed on-chain. The system falls back gracefully and will resume on-chain execution when the wallet is refunded.
+
+### Mandate Too Restrictive
+
+Overly tight constraints can cause every proposal to be rejected, resulting in continuous hold decisions. The system will not take action that violates the mandate, even if conditions deteriorate. Users should monitor for this pattern and widen constraints when appropriate.
+
+### Strategy Adapter Failure
+
+If an external protocol's adapter encounters an error — contract upgrade, paused protocol, or state change — the vault's totalAssets calculation may be affected. The vault will continue functioning with its idle balance.
+
+### Emergency Stop Loop
+
+Under extreme volatility, emergency stops may trigger repeatedly. The vault will remain paused until conditions stabilize and an authorized address performs a manual unpause.
+
+### Data Degradation
+
+In the presence of stale, incomplete, or unreliable data, risk scores may become less accurate. The system does not automatically increase conservatism when data quality declines — this is a known limitation.

@@ -1,0 +1,46 @@
+---
+title: "Exposure vs Allocation"
+description: "RAX Protocol — Exposure vs Allocation"
+---
+
+Exposure and allocation are related but distinct concepts in RAX.
+
+---
+
+### Defining the Difference
+
+**Allocation** is the intended distribution of capital — the target percentages assigned to each protocol or strategy by the allocation engine or user.
+
+**Exposure** is the actual distribution of capital at any given moment. It may differ from the allocation due to market movements, yield changes, deposits or withdrawals in underlying protocols, or timing between rebalances.
+
+The gap between allocation and exposure is what triggers rebalancing. When the deviation exceeds the mandate's rebalance threshold, the system proposes bringing exposure back in line with the target allocation.
+
+---
+
+### Why the Distinction Matters
+
+In traditional finance, allocation and exposure are often treated as the same thing. In DeFi, they can diverge significantly between rebalances because underlying positions shift in value continuously.
+
+A portfolio allocated 30% to Aave may drift to 35% exposure if Aave positions appreciate faster than others. This drift changes the risk profile even though no deliberate action was taken.
+
+RAX monitors this drift continuously and uses the deviation as a key input to the rebalancing decision.
+
+---
+
+### Exposure Dimensions
+
+RAX tracks exposure across three dimensions:
+
+- **Protocol exposure** — percentage of capital in each protocol (Aave, Compound, Uniswap, Aerodrome, etc.)
+- **Asset class exposure** — distribution across stablecoins, volatile assets, and liquidity pool positions
+- **Chain exposure** — distribution across networks (currently Base; multi-chain is planned)
+
+Concentration risk is measured using the Herfindahl-Hirschman Index (HHI). A higher HHI indicates a more concentrated portfolio, which increases the concentration risk component of the overall Risk Score.
+
+---
+
+### How Exposure Informs Decisions
+
+High concentration in a single protocol or asset class creates dependency risk. If that protocol experiences a vulnerability or liquidity event, a concentrated portfolio suffers disproportionately.
+
+The allocation engine uses exposure data to avoid proposing allocations that would increase concentration beyond mandate limits. The mandate's `maxProtocolExposure` parameter directly caps how much any single protocol can represent in the portfolio.

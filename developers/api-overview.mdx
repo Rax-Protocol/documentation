@@ -1,0 +1,26 @@
+---
+title: "API Overview"
+description: "RAX Protocol — API Overview"
+---
+
+RAX exposes internal API endpoints through Next.js API routes that power the dashboard and can be used for integration.
+
+---
+
+### Current State
+
+The API supports vault operations (create, deposit, withdraw, query state), allocation engine operations (evaluate, approve, reject, simulate), mandate management (create, update, read), and decision log retrieval.
+
+The API is currently internal and authenticated through wallet connection. Endpoints follow the pattern:
+
+    /api/vault/[action]
+    /api/engine/[action]
+    /api/mandate/[action]
+
+All endpoints accept and return JSON.
+
+---
+
+### Planned
+
+A public API with formal authentication (API keys), rate limiting, versioning, and comprehensive endpoint documentation is planned. This will enable external integrations, third-party dashboards, and programmatic access to risk intelligence.

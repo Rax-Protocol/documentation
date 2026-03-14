@@ -1,0 +1,34 @@
+---
+title: "Risk-Adjusted Yield"
+description: "RAX Protocol — Risk-Adjusted Yield"
+---
+
+Raw yield (APY) is insufficient for evaluating DeFi opportunities without risk context.
+
+A 50% APY pool with extreme volatility and low liquidity may deliver worse risk-adjusted outcomes than a 5% APY position in a stable, liquid protocol. Headline yield attracts capital, but risk-adjusted yield determines whether that capital is preserved.
+
+---
+
+### How RAX Calculates Risk-Adjusted Yield
+
+RAX computes risk-adjusted yield as:
+
+    Risk-Adjusted Yield = APY / (1 + Risk Score / 100)
+
+A pool with 12% APY and a risk score of 30 has a risk-adjusted yield of approximately 9.2. The same 12% APY with a risk score of 70 drops to approximately 7.1.
+
+This metric feeds into the Intelligence Score and directly influences the allocation engine. Under defensive and balanced strategy profiles, the engine favors positions with higher risk-adjusted yield over raw APY.
+
+---
+
+### Role in Allocation
+
+Strategies that deliver more return per unit of risk are favored, especially under defensive or balanced profiles. Higher-yield strategies with weaker risk-adjusted performance may be deprioritized even if headline returns appear attractive.
+
+This ensures the system does not chase yield at the expense of portfolio stability — a core design principle of RAX.
+
+---
+
+### Limitations
+
+Risk-adjusted yield is backward-looking — it uses current APY and current risk scores. It does not account for future changes in either metric. It should be used alongside simulations and stress testing, not as a standalone decision signal.

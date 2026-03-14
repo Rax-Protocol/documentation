@@ -1,0 +1,80 @@
+---
+title: "AI-Managed Vault"
+description: "RAX Protocol — AI-Managed Vault"
+---
+
+The AI-Managed Vault is a fully functional, on-chain capital management system deployed on Base.
+
+It combines the ERC-4626 tokenized vault standard with multi-strategy allocation, autonomous keeper-based rebalancing, and a comprehensive fee and safety system.
+
+---
+
+### Architecture
+
+The vault implements ERC-4626. Users deposit USDC and receive vault shares proportional to their deposit. The vault manages assets across multiple DeFi strategies through dedicated adapter contracts.
+
+**Vault Contract:** `0x3E6bf646b379C75d47Cf91d5569621FD0df53d78` (Base Sepolia)
+
+**Underlying Asset:** USDC (`0x25b56942824E65B5d83BD57f54e3518CccFcd088` — MockUSDC on testnet)
+
+The total assets under management equals idle USDC in the vault plus the sum of assets deployed across all registered strategy adapters.
+
+---
+
+### Strategy Adapters
+
+The vault allocates capital through four dedicated adapter contracts:
+
+- **Aave Adapter** — deposits into Aave lending pools
+- **Compound Adapter** — deposits into Compound lending markets
+- **Uniswap V3 Adapter** — concentrated liquidity positions
+- **Aerodrome Adapter** — liquidity provision and gauge staking
+
+Each adapter implements the `IStrategyAdapter` interface, providing standardized `deposit()`, `withdraw()`, and `totalAssets()` functions. New strategies can be added through the `addStrategy()` function with a configurable maximum exposure limit.
+
+---
+
+### Keeper System
+
+The keeper is a dedicated wallet authorized to execute rebalances on the vault contract. The `onlyKeeper` modifier restricts the `rebalance()` function to this address or the contract owner.
+
+Rebalancing accepts an array of strategy addresses and target weights in basis points (summing to 10,000). The vault redistributes capital across strategies accordingly. The keeper can also trigger `harvestAll()` to collect rewards from all active strategies.
+
+---
+
+### Fee Structure
+
+The vault collects fees through four mechanisms:
+
+- **Management Fee** — annual fee in basis points, accrued over time (maximum 5%)
+- **Performance Fee** — charged on profits above the high watermark (maximum 30%)
+- **Deposit Fee** — entry fee deducted from deposits
+- **Withdrawal Fee** — exit fee deducted from withdrawals
+
+Fees are collected to a designated treasury address. The high watermark ensures performance fees only apply to new profits — during recovery periods after a drawdown, no performance fees are charged.
+
+---
+
+### Safety Mechanisms
+
+The vault includes multiple layers of protection:
+
+- **Pausable** — emergency pause halts all deposits, withdrawals, and rebalances instantly
+- **ReentrancyGuard** — prevents reentrancy attacks on deposit and withdrawal functions
+- **Ownable2Step** — two-step ownership transfer prevents accidental or malicious ownership changes
+- **Max Drawdown Halt** — if vault value drops below the drawdown threshold (configurable, default 15%) relative to the initial share price, operations halt automatically
+- **High Watermark** — tracks peak share price, preventing performance fee extraction during recovery
+
+---
+
+### Mandate Enforcement
+
+The off-chain allocation engine enforces all mandate constraints before submitting any rebalance transaction to the keeper. The keeper will not submit a transaction that violates the mandate.
+
+The on-chain contract provides an additional safety layer through the pause mechanism and drawdown check, creating defense in depth.
+
+---
+
+### Current Deployment
+
+The vault is live on Base Sepolia testnet. All strategy adapters are deployed and registered. The keeper wallet is funded and operational. Mainnet deployment is planned following further testing and audit.

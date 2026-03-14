@@ -1,0 +1,26 @@
+---
+title: "Glossary"
+description: "RAX Protocol — Glossary"
+---
+
+**Allocation Engine** — The decision-support system that evaluates opportunities and proposes capital allocations within mandate constraints. Can be invoked manually through the interface or autonomously through RaxBot.
+
+**Decision Cycle** — One complete evaluation pass by RaxBot: risk calculation, mandate checking, allocation proposal, and execution or hold. Each cycle produces a logged decision record.
+
+**ERC-4626** — A tokenized vault standard on Ethereum. The RAX vault implements this standard, issuing shares proportional to deposits and managing assets across multiple strategies.
+
+**Exposure** — The actual distribution of capital across protocols, assets, or chains at any point in time. May differ from the target allocation due to market movements between rebalances.
+
+**Intelligence Score** — A proprietary composite metric (0-100) where higher values indicate better risk-adjusted opportunity. Inverts risk dimensions and adds yield quality bonuses.
+
+**Keeper** — A dedicated wallet authorized to execute rebalance transactions on the vault contract. The keeper operates within mandate rules and is the only address permitted to call the rebalance function on-chain.
+
+**Mandate** — A user-defined set of constraints that governs all autonomous actions: risk tolerance, exposure limits, allowlists, rebalance thresholds, drawdown limits, and approval rules.
+
+**RaxBot** — The autonomous execution process that runs decision cycles on a schedule, monitoring conditions and acting within the mandate without requiring user interaction for each cycle.
+
+**Risk Score** — A normalized value from 0 to 100 representing relative risk. Derived from five weighted dimensions and used for comparison across assets, protocols, and portfolios.
+
+**Strategy Adapter** — A smart contract that connects the vault to a specific DeFi protocol (Aave, Compound, Uniswap V3, Aerodrome), handling deposits, withdrawals, and yield collection through the IStrategyAdapter interface.
+
+**Tier** — Access level determined by $RAX token holdings. Four tiers: Free (0 RAX), Holder (1+ RAX), Pro (1,000+ RAX), Power (10,000+ RAX).
