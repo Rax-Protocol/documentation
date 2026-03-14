@@ -109,12 +109,12 @@
   "navbar": {
     "links": [
       {
-        "label": "App",
-        "href": "https://app.raxprotocol.xyz"
+        "label": "Website",
+        "href": "https://raxprotocol.xyz"
       },
       {
-        "label": "GitHub",
-        "href": "https://github.com/Rax-Protocol"
+        "label": "X",
+        "href": "https://x.com/raxprotocol"
       }
     ],
     "primary": {
@@ -138,5 +138,6 @@
   "appearance": {
     "default": "system",
     "strict": true
-  }
+  },
+  "favicon": "/images/Rax_Union.png"
 }

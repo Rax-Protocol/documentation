@@ -1,89 +1,67 @@
 ---
 title: "Introduction"
-description: "RAX Protocol — AI-driven risk intelligence and capital management for DeFi"
 ---
-
-RAX Protocol is an institutional-grade DeFi risk intelligence and AI-driven capital management system.
-
-As DeFi markets grow in complexity, traditional metrics such as APY, TVL, or isolated protocol scores are no longer sufficient to evaluate risk or allocate capital responsibly. New financial primitives, cross-chain liquidity, leveraged strategies, and automated agents introduce systemic risks that require continuous monitoring, contextual analysis, and adaptive decision-making.
-
-RAX Protocol is designed to address this gap.
-
-It provides a unified framework for understanding risk, exposure, and capital efficiency across DeFi — combining real-time data, multi-dimensional risk models, AI-driven analysis, and an autonomous vault that executes within explicit constraints.
 
 ---
 
-## What RAX Does
+title: Introduction
 
-RAX enables users to:
-
-- Monitor global and portfolio-level risk in real time using a normalized scoring system
-- Understand protocol, asset, and chain exposure through detailed analysis
-- Detect anomalies, volatility shifts, and liquidity stress events
-- Simulate adverse market conditions and stress scenarios before committing capital
-- Allocate capital using explicit risk constraints and configurable strategy profiles
-- Manage an autonomous on-chain vault that operates within user-defined mandates
-
-Rather than optimizing for raw yield, RAX prioritizes capital preservation, risk-adjusted returns, and transparency over every decision made by the system.
+description: Overview of the RAX Protocol.
 
 ---
 
-## Who RAX Is For
+# RAX Protocol
 
-RAX is built for participants who manage capital in complex on-chain environments, including:
+RAX is an AI-powered risk intelligence layer for DeFi.
 
-- DeFi treasuries and DAOs seeking structured risk management
-- Funds and professional allocators requiring constraint-based capital deployment
-- Advanced individual users who want full transparency over vault operations
-- Builders and AI agents integrating risk intelligence into their own systems
+The protocol analyzes on-chain opportunities, simulates possible outcomes and allocates capital through autonomous vault strategies designed to maximize **risk-adjusted yield**.
 
-The system is modular. Each component — risk scoring, exposure analysis, simulations, the allocation engine, and the autonomous vault — can be used independently or as part of a full risk and allocation stack.
+Unlike traditional yield aggregators, RAX focuses on **risk analysis before allocation**, evaluating exposure, liquidity conditions and protocol health.
 
 ---
 
-## How RAX Is Structured
+## Core Components
 
-RAX is composed of several interconnected layers:
+### Risk Intelligence
 
-A **data and risk engine** that ingests real-time on-chain information and produces normalized risk scores from five dimensions: smart contract risk, liquidity, volatility, protocol maturity, and impermanent loss exposure.
+RAX continuously evaluates DeFi opportunities using multiple metrics including liquidity depth, volatility and protocol health to generate a dynamic **risk score**.
 
-An **allocation engine** that applies explicit constraints — maximum risk tolerance, protocol exposure limits, liquidity minimums, drawdown thresholds — to generate allocation proposals within configurable strategy profiles.
+### Simulation Engine
 
-An **AI-managed vault** built on the ERC-4626 standard, deployed on Base. The vault supports multi-strategy allocation through dedicated adapters for Aave, Compound, Uniswap V3, and Aerodrome, with keeper-based rebalancing and a management and performance fee system.
+Before capital is allocated, RAX runs simulations to evaluate potential outcomes such as:
 
-An **autonomous execution layer (RaxBot)** that runs the allocation engine as an independent process, monitoring conditions continuously and executing on-chain rebalances within mandate boundaries.
+- expected yield
 
-An **alerting and monitoring system** for continuous risk surveillance, with configurable severity thresholds.
+- downside risk
 
-An **access and governance layer** gated by $RAX token holdings, with four tiers providing progressive access to platform features.
+- drawdown scenarios
 
----
+- exposure concentration
 
-## Why Risk Intelligence Matters
+### Allocation Engine
 
-The next generation of DeFi introduces products such as leveraged liquidity, cross-chain strategies, synthetic exposure to real-world assets, and autonomous agents. These systems increase capital efficiency, but they also amplify hidden risk.
+The allocation engine distributes capital across strategies based on **risk-adjusted return** rather than raw yield.
 
-RAX is designed to operate in this environment by focusing on:
+### AI-Managed Vault
 
-- Context, not isolated metrics
-- Risk-adjusted performance, not headline yield
-- Constraints and limits, not blind automation
-- Transparency and explainability, not black-box decisions
+Capital is deployed through an ERC-4626 vault architecture that executes allocation decisions and manages deposits and withdrawals on-chain.
 
----
+### RaxBot
 
-## What RAX Is Not
-
-RAX is not a yield aggregator. It does not chase the highest APY.
-
-RAX is not a prediction engine. It does not forecast prices.
-
-RAX does not guarantee returns or eliminate risk.
-
-Instead, RAX provides the tools, intelligence, and autonomous infrastructure required to understand risk, manage exposure, and make informed allocation decisions in an increasingly automated on-chain economy.
+RaxBot provides an interpretation layer that helps users understand the system’s decisions and risk exposure.
 
 ---
 
-## Current Status
+## Learn More
 
-RAX is live on Base Sepolia testnet with a deployed ERC-4626 vault, four strategy adapters, an autonomous keeper, and a functional risk analytics dashboard. The $RAX token is deployed on Base. The protocol is in active development toward mainnet.
+Explore the documentation to understand how RAX works:
+
+- Risk Score
+
+- Exposure vs Allocation
+
+- Simulations
+
+- Allocation Engine
+
+- AI-Managed Vault
