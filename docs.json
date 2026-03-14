@@ -137,9 +137,5 @@
   "appearance": {
     "default": "system",
     "strict": true
-  },
-  "logo": {
-    "light": "/images/logo-32x32-vector-ish.svg",
-    "dark": "/images/logo-32x32-vector-ish.svg"
   }
 }
